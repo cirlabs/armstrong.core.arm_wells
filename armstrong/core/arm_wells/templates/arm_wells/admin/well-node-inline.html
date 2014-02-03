@@ -5,7 +5,7 @@
       {% for field in inline_admin_formset.formset.empty_form.hidden_fields %}
           {{ field }}
       {% endfor %}
-      <div class="gfkWrapper">
+      <div class="gfkWrapper {{namespace}}-class">
       {{ inline_admin_formset.formset.empty_form.object_id }}
       </div>
       {{ inline_admin_formset.formset.empty_form.deletion_field.as_hidden_field }}
@@ -30,7 +30,9 @@
           id: "id_{{ namespace }}-__prefix__-object_id",
           searchDone: function(app) {
             {{ namespace }}EmptyForm.trigger('createObject');
-            app.searchBox.clearSearch();
+ // this doesnt work because visual search expects there to be a event
+//            app.searchBox.clearSearch(); 
+            $(".{{namespace}}-class").find('.VS-cancel-search-box').click();
           }
         });
     });
