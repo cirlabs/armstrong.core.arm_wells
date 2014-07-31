@@ -17,7 +17,7 @@ class WellTypeBase(models.Model):
 
     """
     title = models.CharField(max_length=100)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=255)
 
     class Meta:
         abstract = True
